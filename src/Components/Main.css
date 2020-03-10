@@ -1,0 +1,27 @@
+.main-container>h1 {
+  text-align: center; 
+  margin: 1rem;
+  padding: 1.5rem;
+  border: black solid 2px;
+}
+
+.display-area {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  /* flex-grow: ; */
+}
+
+.notes {
+  flex-grow: 2;
+  margin: 0 1rem;
+  border: black solid 2px;
+  height: 80vh;
+}
+
+.folders {
+  flex-grow: 1;
+  margin: 0 1rem;
+  border: black solid 2px;
+  height: 80vh;
+}
