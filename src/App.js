@@ -130,10 +130,12 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Main />
+        <Main folders={this.state.folders} notes={this.state.notes}
+         />
+        
       </div>
     );
   }
 }
 
-export default App
+export default App;

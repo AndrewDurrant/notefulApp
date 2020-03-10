@@ -1,15 +1,29 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Folder from './Folder';
 
 export class FolderList extends Component {
   render() {
+    const allFolders=this.props.folders.map(folder=>{
+      return(
+        <Folder
+        key={folder.id}
+        id={folder.id}
+        name={folder.name}
+        />
+      )
+    })
+    
     return (
+      
+      <section className="folders">
       <div>
-        // map over the store and and build the folder:
-        {/* <Folder /> */}
+      FolderList
+        {allFolders}
         <button>Add Folder</button>
-      </div>
+        </div>
+        </section>
     )
-  }
-}
+  }}
 
-export default FolderList
+
+export default FolderList;
