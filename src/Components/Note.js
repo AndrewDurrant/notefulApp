@@ -7,7 +7,6 @@ export class Note extends Component {
       <div>
         <h2>{this.props.name}</h2>
         <button>Delete Note</button>
-        <button>Go Back</button>
       </div>
     )
   }

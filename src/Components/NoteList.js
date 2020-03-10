@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Note from './Note';
+import './Main.css'
 
 export class NoteList extends Component {
   render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Folder from './Folder';
+import './Main.css'
 
 export class FolderList extends Component {
   render() {
@@ -9,6 +10,7 @@ export class FolderList extends Component {
         key={folder.id}
         id={folder.id}
         name={folder.name}
+        history={this.props.history}
         />
       )
     })
@@ -19,7 +21,9 @@ export class FolderList extends Component {
       <div>
       FolderList
         {allFolders}
-        <button>Add Folder</button>
+        <button onClick={() => {
+          
+        }}>Add Folder</button>
         </div>
         </section>
     )

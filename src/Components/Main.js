@@ -4,6 +4,7 @@ import NoteList from './NoteList';
 import './Main.css';
 import { Route } from 'react-router-dom';
 import ExpandedNote from './ExpandedNote';
+import Note from './Note';
 
 export class Main extends Component {
 	render() {
@@ -19,7 +20,9 @@ export class Main extends Component {
 								<main>
 									{' '}
 									<NoteList notes={this.props.notes} />
-									<FolderList folders={this.props.folders} />
+                  <FolderList 
+                    folders={this.props.folders}
+                    history={props.history} />
 								</main>
 							);
 						}}
@@ -33,7 +36,9 @@ export class Main extends Component {
                 {' '}
                 <NoteList notes={this.props.notes.filter
                   (note=>note.folderId===props.match.params.folderId)} />
-                <FolderList folders={this.props.folders} />
+                <FolderList 
+                  folders={this.props.folders}
+                  history={props.history} />
               </main>
             );
           }}
@@ -42,10 +47,18 @@ export class Main extends Component {
         exact
         path="/note/:noteId"
         render={(props) => {
+          let note = this.props.notes.find(note=>note.id===props.match.params.noteId)
           return (
             <main>
               {' '}
-            <ExpandedNote note={this.props.notes.find(note=>note.id===props.match.params.noteId)}/>
+            <ExpandedNote 
+            
+              note={note}
+              history={props.history}
+              folderName={this.props.folders.find(folder => {
+                return folder.id === note.folderId 
+              }).name
+              }/>
             </main>
           );
         }}
