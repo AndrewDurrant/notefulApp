@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Note from '../Note/Note'
 
 function ExpandedNote(props){
     return(

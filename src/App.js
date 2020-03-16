@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import Main from './Components/Main';
-
-
-
-
+import Main from './Components/Main/Main';
 
 export class App extends Component {
   constructor(props) {
@@ -130,9 +126,10 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Main folders={this.state.folders} notes={this.state.notes}
-         />
-        
+        <Main 
+          folders={this.state.folders} 
+          notes={this.state.notes}
+        />
       </div>
     );
   }

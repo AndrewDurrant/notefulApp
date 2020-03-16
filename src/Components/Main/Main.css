@@ -5,18 +5,10 @@
   border: black solid 2px;
 }
 
-/* .display-area {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row-reverse; 
-  /* flex-grow: ; */
-
-
 main {
   display: flex;
   justify-content: space-around;
   flex-direction: row-reverse; 
-  /* flex-grow: ; */
 }
 
 .notes {
