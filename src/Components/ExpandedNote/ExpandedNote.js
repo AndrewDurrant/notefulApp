@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Note from '../Note/Note'
 
 function ExpandedNote(props){
@@ -6,9 +6,6 @@ function ExpandedNote(props){
         <section>
             <Note name={props.note.name}/>
             <div>{props.note.content}</div>
-
-            <button>Go Back</button>
-            <span></span>
         </section>
     )
 }

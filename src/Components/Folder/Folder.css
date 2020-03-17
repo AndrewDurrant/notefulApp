@@ -1,0 +1,11 @@
+.folderCard {
+  margin: 0.5rem;
+  border: rgb(55, 55, 95) 1px solid;
+}
+
+.folderCardTitle {
+  text-align: center;
+  padding: 0.5rem;
+  color: rgb(55, 55, 95);
+  
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Note from '../Note/Note';
-import '../Main/Main.css';
+import './NoteList.css';
 
 export class NoteList extends Component {
   render() {
@@ -19,9 +19,9 @@ export class NoteList extends Component {
 
       return(
         <main className="notes">
-          <div>
+          <div className="noteCardContainer">
             { allNotes}
-            <button>Add Note</button>
+            <button className="addCardBtn">Add Note</button>
           </div>
         </main>
     )

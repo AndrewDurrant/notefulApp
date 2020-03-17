@@ -1,0 +1,14 @@
+.folders {
+  padding: 1rem;
+  margin: 0 1rem;
+  border: rgb(55, 55, 95) solid 2px;
+}
+
+.addCardBtn {
+  padding: 2.5px;
+  margin: 0 1rem;
+  text-align: center;
+  display: block;
+  background-color: rgb(55, 55, 95);
+  color: whitesmoke;
+}

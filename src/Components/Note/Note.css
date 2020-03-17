@@ -1,0 +1,9 @@
+.noteCardTitle {
+  color: rgb(55, 55, 95);
+}
+
+.deleteCardBtn {
+  padding: 2.5px;
+  background-color: rgb(55, 55, 95);
+  color: whitesmoke;
+}

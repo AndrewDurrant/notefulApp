@@ -1,0 +1,21 @@
+.notes {
+  margin: 0 1rem;
+  border: rgb(55, 55, 95) solid 2px;
+}
+
+.noteCard {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: rgb(55, 55, 95) solid 1px;
+}
+
+.noteCardContainer {
+  width: 100%;
+  padding: 1rem;
+}
+
+.addCardBtn {
+  padding: 2.5px;
+  background-color: rgb(55, 55, 95);
+  color: whitesmoke;
+}
