@@ -3,7 +3,8 @@
 }
 
 .deleteCardBtn {
-  padding: 2.5px;
+  padding: 3px 6px;
+  margin-top: 10px;
   background-color: rgb(55, 55, 95);
   color: whitesmoke;
 }

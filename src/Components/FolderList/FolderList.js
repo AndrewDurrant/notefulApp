@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Folder from '../Folder/Folder';
 import './FolderList.css'
+import NotefulContext from '../../NotefulContext'
+
 
 export class FolderList extends Component {
+  static contextType = NotefulContext;
+
   render() {
-    const allFolders=this.props.folders.map(folder=>{
+    let context = this.context;
+    
+    const allFolders = context.folders.map(folder=>{
       return(
         <Folder
           key={folder.id}
@@ -25,7 +31,7 @@ export class FolderList extends Component {
         </button>
       </section>
     )
-  }}
-
+  }
+}
 
 export default FolderList;
