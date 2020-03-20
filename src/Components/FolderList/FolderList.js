@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Folder from '../Folder/Folder';
+import { Link } from 'react-router-dom';
 import './FolderList.css'
-import NotefulContext from '../../NotefulContext'
+import Folder from '../Folder/Folder';
+import NotefulContext from '../../NotefulContext';
+// import AddFolder from '../AddFolder/AddFolder';
 
 
 export class FolderList extends Component {
@@ -24,11 +26,11 @@ export class FolderList extends Component {
     return (
       <section className="folders">
         {allFolders}
-        <button 
-          className="addCardBtn"
-          onClick={() => {}}>
-          Add Folder
-        </button>
+        <Link to='/addFolder'>
+          <button className="addCardBtn">
+            Add Folder
+          </button>
+        </Link>
       </section>
     )
   }

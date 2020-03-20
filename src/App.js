@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import './App.css';
 import FolderList from './Components/FolderList/FolderList';
 import NoteList from './Components/NoteList/NoteList';
 import ExpandedView from './Components/ExpandedView/ExpandedView';
 import NotefulContext from './NotefulContext';
-import './App.css';
-
+import AddFolder from './Components/AddFolder/AddFolder';
+import AddNote from './Components/AddNote/AddNote';
 
 export class App extends Component {
   constructor(props) {
@@ -34,7 +35,35 @@ export class App extends Component {
         })
     })
   }
-  
+
+  handleAddFolder = (folder) => {
+    console.log('made it to app!');
+    
+    fetch('http://localhost:9090/folders',
+    {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(folder)
+    }
+    )
+  }
+
+  handleAddNote = (note) => {
+    console.log('note made it to app');
+
+    fetch('http://localhost:9090/notes',
+    {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(note)
+    }
+    )
+  }
+
   handleDelete = (noteId) => {
     console.log('delete')
     fetch(`http://localhost:9090/notes/${noteId}`, {
@@ -52,8 +81,9 @@ export class App extends Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      addNote: this.addNote,
-      deleteNote: this.handleDelete
+      addNote: this.handleAddNote,
+      deleteNote: this.handleDelete, 
+      addFolder: this.handleAddFolder,
     }
 
     return (
@@ -102,6 +132,25 @@ export class App extends Component {
               <ExpandedView {...props}/>
             )}
           />
+
+          {/* renders addFolder view */}
+          <Route
+            exact
+            path="/addFolder"
+            render={(props) => (
+              <AddFolder {...props} />
+            )}
+          />
+
+          {/* renders addNote view */}
+          <Route
+            exact
+            path="/addNote"
+            render={(props) => (
+              <AddNote {...props} />
+            )}
+          />
+
         </main>
         </>
       </NotefulContext.Provider>

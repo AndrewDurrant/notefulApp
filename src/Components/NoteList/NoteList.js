@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import Note from '../Note/Note';
+import { Link } from 'react-router-dom';
 import './NoteList.css';
+
+import Note from '../Note/Note';
 import NotefulContext from '../../NotefulContext'
+// import AddNote from '../AddNote/AddNote'
 
 export class NoteList extends Component { 
   static contextType = NotefulContext;
@@ -35,9 +38,11 @@ export class NoteList extends Component {
       <main className="notes">
         <div className="noteCardContainer">
           { allNotes}
-          <button className="addCardBtn">
-            Add Note
-          </button>
+          <Link to='/addNote'>
+            <button className="addCardBtn">
+              Add Note
+            </button>
+          </Link>
         </div>
       </main>
     )
