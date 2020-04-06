@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import './Note.css'
-import NotefulContext from '../../NotefulContext'
+import './Note.css';
+import NotefulContext from '../../NotefulContext';
+import PropTypes from 'prop-types';
 
 
 export class Note extends Component {
@@ -28,6 +29,12 @@ export class Note extends Component {
     </div>
     )
   }
+}
+
+Note.propTypes = {
+  history: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 }
 
 export default Note

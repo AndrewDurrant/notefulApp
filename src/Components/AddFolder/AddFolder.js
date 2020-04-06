@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cuid from 'cuid';
 import ValidationError from '../../ValidationError';
 import NotefulContext from '../../NotefulContext';
+import { Link } from 'react-router-dom';
 
 
 
@@ -76,10 +77,11 @@ export class AddFolder extends Component {
           )}
         </div>
         <div className="addFolder__button__group">
-
+          <Link to='/'>
             <button type="reset"> 
               Cancel
             </button>
+          </Link>
             <button
               type="submit"
               disabled= {

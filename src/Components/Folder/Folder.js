@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Folder.css';
+import PropTypes from 'prop-types';
 
 export class Folder extends Component {
   render() {
@@ -14,6 +15,11 @@ export class Folder extends Component {
       </div>
     )
   }
+}
+
+Folder.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default Folder

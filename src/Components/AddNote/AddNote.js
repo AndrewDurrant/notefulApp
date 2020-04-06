@@ -3,6 +3,8 @@ import cuid from 'cuid';
 import ValidationError from '../../ValidationError';
 import NotefulContext from '../../NotefulContext';
 import './AddNote.css'
+import { Link } from 'react-router-dom';
+
 
 export class AddNote extends Component {
   static contextType = NotefulContext;
@@ -139,9 +141,11 @@ export class AddNote extends Component {
         </div>
 
         <div className="addNote__button__group">
-          <button type="reset">
-            Cancel
-          </button>
+          <Link to='/'>
+            <button type="reset">
+              Cancel
+            </button>
+          </Link>
           <button
             type="submit"
             disabled= {
