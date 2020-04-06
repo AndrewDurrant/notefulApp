@@ -7,6 +7,7 @@ import ExpandedView from './Components/ExpandedView/ExpandedView';
 import NotefulContext from './NotefulContext';
 import AddFolder from './Components/AddFolder/AddFolder';
 import AddNote from './Components/AddNote/AddNote';
+import ErrorBoundary from '../ErrorBoundaries/ErrorBoundary';
 
 export class App extends Component {
   constructor(props) {
@@ -25,7 +26,12 @@ export class App extends Component {
         this.setState({
           "folders": data
         })
-    })
+      })
+      .catch(err => {
+        this.setState({
+          error: err
+        })
+      })
 
     fetch('http://localhost:9090/notes')
       .then(response => response.json())
@@ -33,13 +39,16 @@ export class App extends Component {
         this.setState({
           "notes": data
         })
-    })
+      })
+      .catch(err => {
+        this.setState({
+          error: err
+        })
+      })
   }
 
-  handleAddFolder = (folder) => {
-    console.log('made it to app!');
-    
-    fetch('http://localhost:9090/folders',
+  handleAddFolder = (folder) => {    
+    return fetch('http://localhost:9090/folders',
     {
       method: 'POST',
       headers: {
@@ -48,12 +57,19 @@ export class App extends Component {
       body: JSON.stringify(folder)
     }
     )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch(err => {
+      this.setState({ 
+        error: err
+      })
+    })
   }
 
   handleAddNote = (note) => {
-    console.log('note made it to app');
-
-    fetch('http://localhost:9090/notes',
+    return fetch('http://localhost:9090/notes',
     {
       method: 'POST',
       headers: {
@@ -62,10 +78,18 @@ export class App extends Component {
       body: JSON.stringify(note)
     }
     )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch(err => {
+      this.setState({ 
+        error: err
+      })
+    })
   }
 
   handleDelete = (noteId) => {
-    console.log('delete')
     fetch(`http://localhost:9090/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
@@ -77,13 +101,28 @@ export class App extends Component {
     });
   };
 
+  updateFolderData = (folder) => {
+    this.setState({
+      folders: [...this.state.folders, folder]
+    })
+  }
+
+  updateNoteData = (note) => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    })
+  }
+
   render() {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
+      error: this.state.error,
       addNote: this.handleAddNote,
       deleteNote: this.handleDelete, 
       addFolder: this.handleAddFolder,
+      updateFolders: this.updateFolderData,
+      updateNotes: this.updateNoteData
     }
 
     return (
@@ -101,55 +140,65 @@ export class App extends Component {
         </header>
         <main className="main-container">
           {/* renders main page */}
-          <Route 
-            exact 
-            path="/"
-            render={props =>
-              <>
-                <NoteList {...props}/>
-                <FolderList {...props}/>
-              </>
-            }
-          />
+          <ErrorBoundary>
+            <Route 
+              exact 
+              path="/"
+              render={props =>
+                <>
+                  <NoteList {...props}/>
+                  <FolderList {...props}/>
+                </>
+              }
+            />
+          </ErrorBoundary>
 
           {/* renders just the notes for picked folder */}
-          <Route
-            exact
-            path="/folder/:folderId"
-            render={props => (
-              <>
-                <NoteList {...props} />
-                <FolderList {...props} />
-              </>
-            )}
-          />
+          <ErrorBoundary>
+            <Route
+              exact
+              path="/folder/:folderId"
+              render={props => (
+                <>
+                  <NoteList {...props} />
+                  <FolderList {...props} />
+                </>
+              )}
+            />
+          </ErrorBoundary>
 
           {/* renders expanded note view */}
-          <Route 
-            exact 
-            path="/note/:noteId"
-            render={(props) => (
-              <ExpandedView {...props}/>
-            )}
-          />
+          <ErrorBoundary>
+            <Route 
+              exact 
+              path="/note/:noteId"
+              render={(props) => (
+                <ExpandedView {...props}/>
+              )}
+            />
+          </ErrorBoundary>
 
           {/* renders addFolder view */}
-          <Route
-            exact
-            path="/addFolder"
-            render={(props) => (
-              <AddFolder {...props} />
-            )}
-          />
+          <ErrorBoundary>
+            <Route
+              exact
+              path="/addFolder"
+              render={(props) => (
+                <AddFolder {...props} />
+              )}
+            />
+          </ErrorBoundary>
 
           {/* renders addNote view */}
-          <Route
-            exact
-            path="/addNote"
-            render={(props) => (
-              <AddNote {...props} />
-            )}
-          />
+          <ErrorBoundary>
+            <Route
+              exact
+              path="/addNote"
+              render={(props) => (
+                <AddNote {...props} />
+              )}
+            />
+          </ErrorBoundary>
 
         </main>
         </>

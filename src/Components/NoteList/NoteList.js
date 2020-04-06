@@ -4,6 +4,7 @@ import './NoteList.css';
 
 import Note from '../Note/Note';
 import NotefulContext from '../../NotefulContext'
+import NoteError from '../ErrorBoundaries/NoteError';
 // import AddNote from '../AddNote/AddNote'
 
 export class NoteList extends Component { 
@@ -24,20 +25,22 @@ export class NoteList extends Component {
     // maps over designated notes
     const allNotes = filteredNotes.map(note => {
       return(
-        <Note
-          id={note.id}
-          name={note.name}
-          folderId={note.folderId}
-          key={note.id}
-          history={this.props.history}
+        <NoteError>
+          <Note
+            id={note.id}
+            name={note.name}
+            folderId={note.folderId}
+            key={note.id}
+            history={this.props.history}
           />
+        </NoteError>
       )
     })
 
     return(
       <main className="notes">
         <div className="noteCardContainer">
-          { allNotes}
+          { allNotes }
           <Link to='/addNote'>
             <button className="addCardBtn">
               Add Note

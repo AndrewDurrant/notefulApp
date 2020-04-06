@@ -13,19 +13,19 @@ export class Note extends Component {
 
     return (
       <div className="noteCard">
-        <h2 
-          onClick={() => {
-            history.push('/note/'+ id)
-          }}
-          className="noteCardTitle">{name}</h2>
-        <Link to='/'>
-          <button 
-            className="deleteCardBtn"
-            onClick={() => context.deleteNote(id)}>
-            Delete
-          </button>
-        </Link>
-      </div>
+      <h2 
+        onClick={() => {
+          history.push('/note/'+ id)
+        }}
+        className="noteCardTitle">{name}</h2>
+      <Link to='/'>
+        <button 
+          className="deleteCardBtn"
+          onClick={() => context.deleteNote(id)}>
+          Delete
+        </button>
+      </Link>
+    </div>
     )
   }
 }

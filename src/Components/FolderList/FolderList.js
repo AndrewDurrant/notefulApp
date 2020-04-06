@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './FolderList.css'
 import Folder from '../Folder/Folder';
 import NotefulContext from '../../NotefulContext';
+import FolderError from '../ErrorBoundaries/FolderError';
 // import AddFolder from '../AddFolder/AddFolder';
 
 
@@ -14,12 +15,14 @@ export class FolderList extends Component {
     
     const allFolders = context.folders.map(folder=>{
       return(
-        <Folder
-          key={folder.id}
-          id={folder.id}
-          name={folder.name}
-          history={this.props.history}
-        />
+        <FolderError>
+          <Folder
+            key={folder.id}
+            id={folder.id}
+            name={folder.name}
+            history={this.props.history}
+          />
+        </FolderError>
       )
     })
     

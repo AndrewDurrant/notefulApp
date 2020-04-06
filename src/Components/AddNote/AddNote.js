@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cuid from 'cuid';
 import ValidationError from '../../ValidationError';
 import NotefulContext from '../../NotefulContext';
+import './AddNote.css'
 
 export class AddNote extends Component {
   static contextType = NotefulContext;
@@ -60,7 +61,12 @@ export class AddNote extends Component {
       name: noteName.value,
       content: noteContent.value
     }
-    this.context.addNote(note);
+    this.context.addNote(note)
+      .then(() => {
+        // add note
+        this.context.updateNotes(note)
+        this.props.history.push('/')
+      })
   }
 
   validateNoteName() {
@@ -109,7 +115,7 @@ export class AddNote extends Component {
             name="noteContent"
             id="noteContent"
             placeholder="Note it up!"
-            cols="200"
+            cols="66"
             rows="3"
             onChange={e => this.updateNoteContent(e.target.value)}
           />

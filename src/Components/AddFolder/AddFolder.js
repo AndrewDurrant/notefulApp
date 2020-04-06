@@ -36,7 +36,12 @@ export class AddFolder extends Component {
       name: folderName.value
     }
     console.log('Folder Name: ', folderName.value);
-    this.context.addFolder(folder);
+    this.context.addFolder(folder)
+      .then(() => {
+        // add folder
+        this.context.updateFolders(folder)
+        this.props.history.push('/')
+      })
   }
 
   validateFolderName() {
