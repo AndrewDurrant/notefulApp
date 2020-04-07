@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<form
+  className="addNote"
+  onSubmit={[Function]}
+>
+  <h2>
+    Add Note
+  </h2>
+  <div>
+    * required field
+  </div>
+  <div>
+    <label
+      htmlFor="noteName"
+    >
+      Note Name *
+    </label>
+    <input
+      id="noteName"
+      name="noteName"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <div>
+    <label
+      htmlFor="noteContent"
+    >
+      Note Content *
+    </label>
+    <textarea
+      cols="66"
+      id="noteContent"
+      name="noteContent"
+      onChange={[Function]}
+      placeholder="Note it up!"
+      rows="3"
+      type="text"
+    />
+  </div>
+  <div>
+    <label
+      htmlFor="folderId"
+    >
+      Folder Association
+    </label>
+    <select
+      id="folderId"
+      name="folderId"
+      onChange={[Function]}
+    />
+  </div>
+  <div
+    className="addNote__button__group"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <button
+        type="reset"
+      >
+        Cancel
+      </button>
+    </a>
+    <button
+      disabled="Note name is required"
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;

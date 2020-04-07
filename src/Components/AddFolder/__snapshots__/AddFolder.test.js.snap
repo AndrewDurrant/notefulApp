@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<form
+  className="addFolder"
+  onSubmit={[Function]}
+>
+  <h2>
+    Add Folder
+  </h2>
+  <div>
+    * required field
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="folderName"
+    >
+      Folder Name *
+    </label>
+    <input
+      id="folderName"
+      name="folderName"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <div
+    className="addFolder__button__group"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <button
+        type="reset"
+      >
+        Cancel
+      </button>
+    </a>
+    <button
+      disabled="Folder name is required"
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;

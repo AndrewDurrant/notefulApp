@@ -10,7 +10,7 @@ function ExpandedNote(props){
         folderId={props.note.folderId}
         history={props.history}
         name={props.note.name}/>
-      <div>{props.note.content}</div>
+      <article>{props.note.content}</article>
     </section>
   )
 }
