@@ -10,11 +10,14 @@ import NotefulContext from '../../NotefulContext';
 const context = NotefulContext;
 
 it('renders without crashing', () => {
+  const { notes, folders } = context
   const div = document.createElement('div');
 
   ReactDOM.render(
     <MemoryRouter>
       <ExpandedView 
+        notes={ this.notes }
+        folders={ this.folders }
       />
     </MemoryRouter>
     , div
