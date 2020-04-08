@@ -32,9 +32,9 @@ export class Note extends Component {
 }
 
 Note.propTypes = {
-  history: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  history: PropTypes.object,
+  name: PropTypes.string,
+  id: PropTypes.string
 }
 
 export default Note
