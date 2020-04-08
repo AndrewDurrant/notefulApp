@@ -7,19 +7,44 @@ import renderer from 'react-test-renderer';
 
 import NotefulContext from '../../NotefulContext';
 
-const context = NotefulContext;
-
 it('renders without crashing', () => {
-  const { notes, folders } = context
   const div = document.createElement('div');
 
+  const contextValue = {
+    folders: [
+      {
+        "id": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "name": "Important"
+      },
+      {
+        "id": "b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "name": "Super"
+      }
+    ],
+    notes: [
+      {
+        "id": "cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "name": "Dogs",
+        "modified": "2019-01-03T00:00:00.000Z",
+        "folderId": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "content": "Dolores culpa iste et ut atque distinctio repudiandae aut. Suscipit vel voluptatem. Et rem."
+      },
+      {
+        "id": "d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "name": "Cats",
+        "modified": "2018-08-15T23:00:00.000Z",
+        "folderId": "b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "content": "Molestias voluptas et. Molestiae cumque quidem est minus sed placeat maxime nihil illo. Dolor maxime rerum esse."
+      }
+    ],
+  }
+
   ReactDOM.render(
-    <MemoryRouter>
-      <ExpandedView 
-        notes={ this.notes }
-        folders={ this.folders }
-      />
-    </MemoryRouter>
+    <NotefulContext.Provider value={contextValue}>
+      <MemoryRouter>
+        <ExpandedView />
+      </MemoryRouter>
+    </NotefulContext.Provider>
     , div
   )
 
