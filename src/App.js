@@ -106,7 +106,7 @@ export class App extends Component {
       folders: [...this.state.folders, folder]
     })
   }
-
+c
   updateNoteData = (note) => {
     this.setState({
       notes: [...this.state.notes, note]

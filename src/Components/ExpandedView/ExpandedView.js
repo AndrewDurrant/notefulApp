@@ -10,7 +10,7 @@ export class ExpandedView extends Component {
     let context = this.context;
     // get note that matches id
     let note = context.notes.find(note => note.id === this.props.match.params.noteId);
-
+    
     return (
       <main className="expandedContent">
         <section className="expandedCardContainer">
@@ -19,7 +19,7 @@ export class ExpandedView extends Component {
             history={this.props.history}
           />
         </section>
-
+        
         <section className="sidebar">
           <h3 className="folderTitle">
             {

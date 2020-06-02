@@ -39,14 +39,14 @@ export class NoteList extends Component {
 
     return(
       <main className="notes">
-        <div className="noteCardContainer">
+        <section className="noteCardContainer">
           { allNotes }
           <Link to='/addNote'>
             <button className="addCardBtn">
               Add Note
             </button>
           </Link>
-        </div>
+        </section>
       </main>
     )
   }

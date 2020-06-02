@@ -13,20 +13,20 @@ export class Note extends Component {
     const { history, name, id } = this.props;
 
     return (
-      <div className="noteCard">
-      <h2 
-        onClick={() => {
-          history.push('/note/'+ id)
-        }}
-        className="noteCardTitle">{name}</h2>
-      <Link to='/'>
-        <button 
-          className="deleteCardBtn"
-          onClick={() => context.deleteNote(id)}>
-          Delete
-        </button>
-      </Link>
-    </div>
+      <article className="noteCard">
+        <h2 
+          onClick={() => {
+            history.push('/note/'+ id)
+          }}
+          className="noteCardTitle">{name}</h2>
+        <Link to='/'>
+          <button 
+            className="deleteCardBtn"
+            onClick={() => context.deleteNote(id)}>
+            Delete
+          </button>
+        </Link>
+    </article>
     )
   }
 }

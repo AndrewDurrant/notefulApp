@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ExpandedNote from '../ExpandedNote/ExpandedNote';
 import ExpandedView from './ExpandedView';
-import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import NotefulContext from '../../NotefulContext';
@@ -39,11 +39,13 @@ it('renders without crashing', () => {
     ],
   }
 
+  const historyObj = {this.props.history};
+
   ReactDOM.render(
     <NotefulContext.Provider value={contextValue}>
-      <MemoryRouter>
-        <ExpandedView />
-      </MemoryRouter>
+      <BrowserRouter>
+        <ExpandedView history={ historyObj }/>
+      </BrowserRouter>
     </NotefulContext.Provider>
     , div
   )

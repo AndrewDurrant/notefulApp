@@ -96,8 +96,8 @@ export class AddNote extends Component {
     return(
       <form className="addNote" onSubmit={e => this.handleSubmit(e)}>
         <h2>Add Note</h2>
-        <div>* required field</div>
-        <div>
+        <span>* required field</span>
+        <section>
           <label htmlFor="noteName">Note Name *</label>
           <input 
             type="text"
@@ -108,9 +108,9 @@ export class AddNote extends Component {
           {this.state.noteName.touched && (
             <ValidationError message={noteNameError} />
           )}
-        </div>
+        </section>
 
-        <div>
+        <section>
           <label htmlFor="noteContent">Note Content *</label>
           <textarea 
             type="text"
@@ -124,9 +124,9 @@ export class AddNote extends Component {
           {this.state.noteContent.touched && (
             <ValidationError message={noteContentError} />
           )}
-        </div>
+        </section>
 
-        <div>
+        <section>
           <label htmlFor="folderId">Folder Association</label>
           <select 
             name="folderId" 
@@ -138,9 +138,9 @@ export class AddNote extends Component {
               <option value={folder.id} key={folder.id}>{folder.name}</option>
             )}
           </select>
-        </div>
+        </section>
 
-        <div className="addNote__button__group">
+        <section className="addNote__button__group">
           <Link to='/'>
             <button type="reset">
               Cancel
@@ -155,7 +155,7 @@ export class AddNote extends Component {
           >
             Save
           </button>
-        </div>
+        </section>
       </form>
     )
   }
