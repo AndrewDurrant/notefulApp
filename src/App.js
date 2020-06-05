@@ -20,11 +20,12 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders')
       .then(response => response.json())
-      .then(data => {
+      .then(data => {        
         this.setState({
-          "folders": data
+          folders: data,
+          error: null
         })
       })
       .catch(err => {
@@ -33,11 +34,12 @@ export class App extends Component {
         })
       })
 
-    fetch('http://localhost:9090/notes')
+    fetch('http://localhost:8000/api/notes')
       .then(response => response.json())
       .then(data => {
         this.setState({
-          "notes": data
+          "notes": data,
+          error: null
         })
       })
       .catch(err => {
@@ -48,7 +50,7 @@ export class App extends Component {
   }
 
   handleAddFolder = (folder) => {    
-    return fetch('http://localhost:9090/folders',
+    return fetch('http://localhost:8000/api/folders',
     {
       method: 'POST',
       headers: {
@@ -59,7 +61,10 @@ export class App extends Component {
     )
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data);
+      this.setState({
+        folders: [...this.state.folders, data],
+        error: null
+      })
     })
     .catch(err => {
       this.setState({ 
@@ -69,7 +74,7 @@ export class App extends Component {
   }
 
   handleAddNote = (note) => {
-    return fetch('http://localhost:9090/notes',
+    return fetch('http://localhost:8000/api/notes',
     {
       method: 'POST',
       headers: {
@@ -80,7 +85,10 @@ export class App extends Component {
     )
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data);
+      this.setState({
+        notes: [...this.state.notes, data],
+        error: null
+      })
     })
     .catch(err => {
       this.setState({ 
@@ -90,7 +98,7 @@ export class App extends Component {
   }
 
   handleDelete = (noteId) => {
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json'
@@ -106,7 +114,7 @@ export class App extends Component {
       folders: [...this.state.folders, folder]
     })
   }
-c
+
   updateNoteData = (note) => {
     this.setState({
       notes: [...this.state.notes, note]
@@ -172,9 +180,7 @@ c
             <Route 
               exact 
               path="/note/:noteId"
-              render={(props) => (
-                <ExpandedView {...props}/>
-              )}
+              component={ExpandedView}
             />
           </ErrorBoundary>
 
@@ -183,9 +189,7 @@ c
             <Route
               exact
               path="/addFolder"
-              render={(props) => (
-                <AddFolder {...props} />
-              )}
+              component={AddFolder}
             />
           </ErrorBoundary>
 
@@ -194,9 +198,7 @@ c
             <Route
               exact
               path="/addNote"
-              render={(props) => (
-                <AddNote {...props} />
-              )}
+              component={AddNote}
             />
           </ErrorBoundary>
 

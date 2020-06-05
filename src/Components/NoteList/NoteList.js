@@ -24,13 +24,15 @@ export class NoteList extends Component {
 
     // maps over designated notes
     const allNotes = filteredNotes.map(note => {
+      
       return(
-        <NoteError>
+        <NoteError key={note.id}>
           <Note
-            id={note.id}
-            name={note.name}
-            folderId={note.folderId}
             key={note.id}
+            id={note.id}
+            name={note.note_name}
+            content={note.content}
+            folderId={note.folderid}
             history={this.props.history}
           />
         </NoteError>

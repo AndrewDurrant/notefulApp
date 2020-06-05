@@ -34,7 +34,7 @@ export class Note extends Component {
 Note.propTypes = {
   history: PropTypes.object,
   name: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.number
 }
 
 export default Note

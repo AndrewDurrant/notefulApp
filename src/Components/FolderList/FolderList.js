@@ -14,12 +14,13 @@ export class FolderList extends Component {
     let context = this.context;
     
     const allFolders = context.folders.map(folder=>{
+      console.log('folderlist.js', folder)
       return(
-        <FolderError>
+        <FolderError key={folder.id}>
           <Folder
             key={folder.id}
             id={folder.id}
-            name={folder.name}
+            name={folder.folder_name}
             history={this.props.history}
           />
         </FolderError>

@@ -7,9 +7,17 @@ export class ExpandedView extends Component {
   static contextType = NotefulContext;
 
   render() {
-    let context = this.context;
+    let { notes, folders, addNote } = this.context;
+    console.log(addNote);
+    
     // get note that matches id
-    let note = context.notes.find(note => note.id === this.props.match.params.noteId);
+    let note = notes.find(note => note.id === this.props.match.params.noteId);
+
+    let newFolder = folders.find(folder => {
+      return folder.id === note.folderid 
+    })
+    console.log(folders);
+              
     
     return (
       <main className="expandedContent">
@@ -23,9 +31,9 @@ export class ExpandedView extends Component {
         <section className="sidebar">
           <h3 className="folderTitle">
             {
-              context.folders.find(folder => {
-                return folder.id === note.folderId 
-              }).name
+              folders.find(folder => {
+                return folder.id === note.folderid 
+              }).folder_name
             }
           </h3 >
           <Link className="backBtn" to='/'>Go Back</Link>
