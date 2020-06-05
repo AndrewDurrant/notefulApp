@@ -160,7 +160,6 @@ export class App extends Component {
         <main className="main-container">
           {/* renders main page */}
           <Switch>
-          {/* <ErrorBoundary> */}
             <Route 
               exact 
               path="/"
@@ -171,10 +170,7 @@ export class App extends Component {
                 </>
               }
             />
-          {/* </ErrorBoundary> */}
-
           {/* renders just the notes for picked folder */}
-          {/* <ErrorBoundary> */}
             <Route
               exact
               path="/folder/:folderId"
@@ -185,34 +181,24 @@ export class App extends Component {
                 </>
               )}
             />
-          {/* </ErrorBoundary> */}
-
           {/* renders expanded note view */}
-          {/* <ErrorBoundary> */}
             <Route 
               exact 
               path="/note/:noteId"
               component={ExpandedView}
             />
-          {/* </ErrorBoundary> */}
-
           {/* renders addFolder view */}
-          {/* <ErrorBoundary> */}
             <Route
               exact
               path="/addFolder"
               component={AddFolder}
             />
-          {/* </ErrorBoundary> */}
-
           {/* renders addNote view */}
-          {/* <ErrorBoundary> */}
             <Route
               exact
               path="/addNote"
               component={AddNote}
             />
-          {/* </ErrorBoundary> */}
           </Switch>
         </main>
         </>

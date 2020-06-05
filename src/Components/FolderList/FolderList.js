@@ -11,15 +11,13 @@ export class FolderList extends Component {
   static contextType = NotefulContext;
 
   render() {
-    let context = this.context;
+    let { folders } = this.context;
     
-    const allFolders = context.folders.map(folder=>{
+    const allFolders = folders.map(folder=>{
       return(
         <FolderError key={folder.id}>
           <Folder
-            key={folder.id}
-            id={parseInt(folder.id)}
-            name={folder.folder_name}
+            folder={ folder }
             history={this.props.history}
           />
         </FolderError>

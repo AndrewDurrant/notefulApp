@@ -13,10 +13,10 @@ export class NoteList extends Component {
   render() {
     let { notes } = this.context;
     let filteredNotes;
-    console.log(notes)
+
     if (this.props.match.params.folderId) {
       // filters for only notes in folder
-      filteredNotes = notes.filter(note => note.folderid === parseInt(this.props.match.params.folderId));
+      filteredNotes = notes.filter(note => note.folder_id === parseInt(this.props.match.params.folderId));
     } else {
       // returns all notes
       filteredNotes = notes;
@@ -24,15 +24,11 @@ export class NoteList extends Component {
 
     // maps over designated notes
     const allNotes = filteredNotes.map(note => {
-      
+      console.log(note)
       return(
         <NoteError key={note.id}>
           <Note
-            key={note.id}
-            id={note.id}
-            name={note.note_name}
-            content={note.content}
-            folderId={note.folderid}
+            note={note} 
             history={this.props.history}
           />
         </NoteError>

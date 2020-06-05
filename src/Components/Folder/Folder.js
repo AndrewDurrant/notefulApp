@@ -5,10 +5,12 @@ import PropTypes from 'prop-types';
 
 export class Folder extends Component {
   render() {
-    
+    const { title, id } = this.props.folder;
+    // const { history } = this.props; *** may need this for a delete button
+
     return (
-      <NavLink to={`/folder/${parseInt(this.props.id)}`} className="folderCard">
-        <h2 className="folderCardTitle">{this.props.name}</h2>
+      <NavLink to={`/folder/${parseInt(id)}`} className="folderCard">
+        <h2 className="folderCardTitle">{title}</h2>
       </NavLink>
     )
   }

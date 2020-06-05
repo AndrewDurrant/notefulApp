@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import cuid from 'cuid';
 import ValidationError from '../../ValidationError';
 import NotefulContext from '../../NotefulContext';
 import './AddNote.css'
@@ -58,15 +57,13 @@ export class AddNote extends Component {
     event.preventDefault();
     const { noteName, noteContent, folderId } = this.state;
     const note = {
-      id: cuid(),
-      folderid: folderId.value,
-      note_name: noteName.value,
+      folder_id: folderId.value,
+      title: noteName.value,
       content: noteContent.value
     }
+
     this.context.addNote(note)
       .then(() => {
-        // add note
-        this.context.updateNotes(note)
         this.props.history.push('/')
       })
   }
@@ -135,7 +132,7 @@ export class AddNote extends Component {
             onChange={e => this.handleChange(e.target.value)}
           >
             {this.context.folders.map(folder =>
-              <option value={folder.id} key={folder.id}>{folder.name}</option>
+              <option value={folder.id} key={folder.id}>{folder.title}</option>
             )}
           </select>
         </section>

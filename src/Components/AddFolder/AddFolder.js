@@ -5,8 +5,6 @@ import NotefulContext from '../../NotefulContext';
 import { Link } from 'react-router-dom';
 
 
-
-
 export class AddFolder extends Component {
   static contextType = NotefulContext;
 

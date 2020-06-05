@@ -22,7 +22,7 @@ export class ExpandedView extends Component {
         <section className="sidebar">
           <h3 className="folderTitle">
             {
-              findFolder(note.folderid).folder_name
+              findFolder(note.folder_id).title
             }
           </h3 >
           <Link className="backBtn" to='/'>Go Back</Link>

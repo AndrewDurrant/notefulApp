@@ -9,20 +9,22 @@ export class Note extends Component {
   static contextType = NotefulContext;
 
   render() {
-    let context = this.context;
-    const { history, name, id } = this.props;
-
+    console.log(this.props.note);
+    
+    let { deleteNote } = this.context;
+    const { title, id } = this.props.note;
+    const { history } = this.props;
     return (
       <article className="noteCard">
         <h2 
           onClick={() => {
             history.push('/note/'+ id)
           }}
-          className="noteCardTitle">{name}</h2>
+          className="noteCardTitle">{title}</h2>
         <Link to='/'>
           <button 
             className="deleteCardBtn"
-            onClick={() => context.deleteNote(id)}>
+            onClick={() => deleteNote(id)}>
             Delete
           </button>
         </Link>
