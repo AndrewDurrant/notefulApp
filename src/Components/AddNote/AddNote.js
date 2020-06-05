@@ -59,8 +59,8 @@ export class AddNote extends Component {
     const { noteName, noteContent, folderId } = this.state;
     const note = {
       id: cuid(),
-      folderId: folderId.value,
-      name: noteName.value,
+      folderid: folderId.value,
+      note_name: noteName.value,
       content: noteContent.value
     }
     this.context.addNote(note)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 import FolderList from './Components/FolderList/FolderList';
 import NoteList from './Components/NoteList/NoteList';
@@ -61,10 +61,7 @@ export class App extends Component {
     )
     .then((response) => response.json())
     .then((data) => {
-      this.setState({
-        folders: [...this.state.folders, data],
-        error: null
-      })
+      console.log(`added ${data}`)
     })
     .catch(err => {
       this.setState({ 
@@ -121,6 +118,18 @@ export class App extends Component {
     })
   }
 
+  findNote = (noteId) => {
+    console.log(typeof noteId, this.state.notes)
+    const val = this.state.notes.find((note) => note.id === parseInt(noteId))
+    console.log(val);
+    return val;
+    
+  }
+
+  findFolder = (folderId) => {
+    return this.state.folders.find((folder) => folder.id === folderId)
+  }
+
   render() {
     const contextValue = {
       folders: this.state.folders,
@@ -130,7 +139,9 @@ export class App extends Component {
       deleteNote: this.handleDelete, 
       addFolder: this.handleAddFolder,
       updateFolders: this.updateFolderData,
-      updateNotes: this.updateNoteData
+      updateNotes: this.updateNoteData,
+      findNote: this.findNote,
+      findFolder: this.findFolder
     }
 
     return (
@@ -148,7 +159,8 @@ export class App extends Component {
         </header>
         <main className="main-container">
           {/* renders main page */}
-          <ErrorBoundary>
+          <Switch>
+          {/* <ErrorBoundary> */}
             <Route 
               exact 
               path="/"
@@ -159,10 +171,10 @@ export class App extends Component {
                 </>
               }
             />
-          </ErrorBoundary>
+          {/* </ErrorBoundary> */}
 
           {/* renders just the notes for picked folder */}
-          <ErrorBoundary>
+          {/* <ErrorBoundary> */}
             <Route
               exact
               path="/folder/:folderId"
@@ -173,35 +185,35 @@ export class App extends Component {
                 </>
               )}
             />
-          </ErrorBoundary>
+          {/* </ErrorBoundary> */}
 
           {/* renders expanded note view */}
-          <ErrorBoundary>
+          {/* <ErrorBoundary> */}
             <Route 
               exact 
               path="/note/:noteId"
               component={ExpandedView}
             />
-          </ErrorBoundary>
+          {/* </ErrorBoundary> */}
 
           {/* renders addFolder view */}
-          <ErrorBoundary>
+          {/* <ErrorBoundary> */}
             <Route
               exact
               path="/addFolder"
               component={AddFolder}
             />
-          </ErrorBoundary>
+          {/* </ErrorBoundary> */}
 
           {/* renders addNote view */}
-          <ErrorBoundary>
+          {/* <ErrorBoundary> */}
             <Route
               exact
               path="/addNote"
               component={AddNote}
             />
-          </ErrorBoundary>
-
+          {/* </ErrorBoundary> */}
+          </Switch>
         </main>
         </>
       </NotefulContext.Provider>

@@ -11,15 +11,15 @@ export class NoteList extends Component {
   static contextType = NotefulContext;
 
   render() {
-    let context = this.context;
+    let { notes } = this.context;
     let filteredNotes;
-
+    console.log(notes)
     if (this.props.match.params.folderId) {
       // filters for only notes in folder
-      filteredNotes = context.notes.filter(note => note.folderId === this.props.match.params.folderId);
+      filteredNotes = notes.filter(note => note.folderid === parseInt(this.props.match.params.folderId));
     } else {
       // returns all notes
-      filteredNotes = context.notes;
+      filteredNotes = notes;
     }
 
     // maps over designated notes

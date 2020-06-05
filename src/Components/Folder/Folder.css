@@ -1,5 +1,8 @@
 .folderCard {
   margin: 0.5rem;
+  display: block;
+  text-decoration: none;
+
   border: rgb(55, 55, 95) 1px solid;
 }
 
@@ -8,4 +11,12 @@
   padding: 0.5rem;
   color: rgb(55, 55, 95);
   
+}
+
+.folderCard.active {
+  background-color: rgb(55, 55, 95);
+}
+
+.folderCard.active .folderCardTitle {
+  color: #eee
 }

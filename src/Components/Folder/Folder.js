@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import './Folder.css';
+import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 export class Folder extends Component {
   render() {
     
     return (
-      <article 
-        className="folderCard"
-        onClick={() => {
-        this.props.history.push('/folder/'+this.props.id)
-        }}>
+      <NavLink to={`/folder/${parseInt(this.props.id)}`} className="folderCard">
         <h2 className="folderCardTitle">{this.props.name}</h2>
-      </article>
+      </NavLink>
     )
   }
 }

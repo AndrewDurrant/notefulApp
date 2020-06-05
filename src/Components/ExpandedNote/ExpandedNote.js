@@ -7,9 +7,9 @@ function ExpandedNote(props){
     <section>
       <Note 
         id={props.note.id}
-        folderId={props.note.folderId}
+        folderId={props.note.folderid}
         history={props.history}
-        name={props.note.name}/>
+        name={props.note.note_name}/>
       <article>{props.note.content}</article>
     </section>
   )

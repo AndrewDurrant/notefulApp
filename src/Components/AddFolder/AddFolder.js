@@ -34,7 +34,7 @@ export class AddFolder extends Component {
     const { folderName } = this.state;
     const folder = {
       id: cuid(),
-      name: folderName.value
+      folder_name: folderName.value
     }
     console.log('Folder Name: ', folderName.value);
     this.context.addFolder(folder)
