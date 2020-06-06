@@ -7,7 +7,7 @@ import ExpandedView from './Components/ExpandedView/ExpandedView';
 import NotefulContext from './NotefulContext';
 import AddFolder from './Components/AddFolder/AddFolder';
 import AddNote from './Components/AddNote/AddNote';
-import ErrorBoundary from './Components/ErrorBoundaries/ErrorBoundary';
+// import ErrorBoundary from './Components/ErrorBoundaries/ErrorBoundary';
 
 export class App extends Component {
   constructor(props) {
