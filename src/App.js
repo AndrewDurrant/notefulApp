@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
+import config from '../config'
 import FolderList from './Components/FolderList/FolderList';
 import NoteList from './Components/NoteList/NoteList';
 import ExpandedView from './Components/ExpandedView/ExpandedView';
@@ -20,7 +21,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/folders')
+    fetch(`${config.API_ENDPOINT}/folders`)
       .then(response => response.json())
       .then(data => {        
         this.setState({
@@ -34,7 +35,7 @@ export class App extends Component {
         })
       })
 
-    fetch('http://localhost:8000/api/notes')
+    fetch(`${config.API_ENDPOINT}/notes`)
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -50,7 +51,7 @@ export class App extends Component {
   }
 
   handleAddFolder = (folder) => {    
-    return fetch('http://localhost:8000/api/folders',
+    return fetch(`${config.API_ENDPOINT}/folders`,
     {
       method: 'POST',
       headers: {
