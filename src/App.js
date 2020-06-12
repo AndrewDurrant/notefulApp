@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
-import config from '../config'
+import config from './config'
 import FolderList from './Components/FolderList/FolderList';
 import NoteList from './Components/NoteList/NoteList';
 import ExpandedView from './Components/ExpandedView/ExpandedView';
@@ -21,9 +21,16 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/folders`)
+    console.log(config.API_ENDPOINT);
+    
+    fetch(`${config.API_ENDPOINT}/folders`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+      }
+    })
       .then(response => response.json())
-      .then(data => {        
+      .then(data => {                
         this.setState({
           folders: data,
           error: null
@@ -35,7 +42,12 @@ export class App extends Component {
         })
       })
 
-    fetch(`${config.API_ENDPOINT}/notes`)
+    fetch(`${config.API_ENDPOINT}/notes`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+      }
+    })
       .then(response => response.json())
       .then(data => {
         this.setState({

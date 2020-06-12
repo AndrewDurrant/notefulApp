@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
 export class Note extends Component {
   static contextType = NotefulContext;
 
-  render() {
-    console.log(this.props.note);
-    
+  render() {    
     let { deleteNote } = this.context;
     const { title, id } = this.props.note;
     const { history } = this.props;

@@ -12,6 +12,7 @@ export class NoteList extends Component {
 
   render() {
     let { notes } = this.context;
+    
     let filteredNotes;
 
     if (this.props.match.params.folderId) {
@@ -24,7 +25,6 @@ export class NoteList extends Component {
 
     // maps over designated notes
     const allNotes = filteredNotes.map(note => {
-      console.log(note)
       return(
         <NoteError key={note.id}>
           <Note

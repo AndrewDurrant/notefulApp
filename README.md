@@ -1,3 +1,7 @@
+Every time that you make changes be sure to `npm run build` and then `vercel ./build`
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
