@@ -52,3 +52,12 @@ main {
   width: 100%;
   color: rgb(55, 55, 95);
 }
+
+.basic-btn {
+  margin: 1rem;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: rgb(55, 55, 95);
+  color: #eee;
+}

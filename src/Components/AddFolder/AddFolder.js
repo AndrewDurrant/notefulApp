@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import cuid from 'cuid';
 import ValidationError from '../../ValidationError';
 import NotefulContext from '../../NotefulContext';
 import { Link } from 'react-router-dom';
+import './AddFolder.css';
 
 
 export class AddFolder extends Component {
@@ -31,14 +31,11 @@ export class AddFolder extends Component {
     event.preventDefault();
     const { folderName } = this.state;
     const folder = {
-      id: cuid(),
-      folder_name: folderName.value
+      title: folderName.value
     }
-    console.log('Folder Name: ', folderName.value);
     this.context.addFolder(folder)
       .then(() => {
         // add folder
-        this.context.updateFolders(folder)
         this.props.history.push('/')
       })
   }
@@ -62,7 +59,7 @@ export class AddFolder extends Component {
       <form className="addFolder" onSubmit={e => this.handleSubmit(e)}>
         <h2>Add Folder</h2>
         <div>* required field</div>
-        <div className="form-group">
+        <section className="form-group">
           <label htmlFor="folderName">Folder Name *</label>
           <input 
             type="text"
@@ -73,14 +70,17 @@ export class AddFolder extends Component {
           {this.state.folderName.touched && (
             <ValidationError message={folderNameError} />
           )}
-        </div>
-        <div className="addFolder__button__group">
+        </section>
+        <section className="addFolder__button__group">
           <Link to='/'>
-            <button type="reset"> 
+            <button 
+              className="basic-btn" 
+              type="reset"> 
               Cancel
             </button>
           </Link>
             <button
+              className="basic-btn"
               type="submit"
               disabled= {
                 this.validateFolderName()
@@ -88,7 +88,7 @@ export class AddFolder extends Component {
             >
               Save
             </button>
-        </div>
+        </section>
         
       </form>
     )

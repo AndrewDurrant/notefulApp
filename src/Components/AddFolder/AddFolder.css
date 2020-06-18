@@ -1,25 +1,16 @@
-.addNote {
-  margin: 2rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.addNote section {
+.addFolder section {
   margin: 1rem 0;
 }
 
-.addNote label {
+.addFolder label {
   display: block;
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: .5rem;
 }
 
-#noteName,
-#noteContent {
+#folderName {
   font-size: 16px;
   width: 420px;
   padding: 5px;
 }
-

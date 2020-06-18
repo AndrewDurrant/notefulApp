@@ -61,7 +61,6 @@ export class AddNote extends Component {
       title: noteName.value,
       content: noteContent.value
     }
-
     this.context.addNote(note)
       .then(() => {
         this.props.history.push('/')
@@ -86,9 +85,17 @@ export class AddNote extends Component {
     }
   }
 
+  validateFolderId() {
+    const folderId = this.state.folderId.value;
+    if(folderId === '') {
+      return 'Please choose a folder';
+    }
+  }
+
   render() {
     const noteNameError = this.validateNoteName();
     const noteContentError = this.validateNoteContent();
+    const folderIdError = this.validateFolderId();
 
     return(
       <form className="addNote" onSubmit={e => this.handleSubmit(e)}>
@@ -131,23 +138,29 @@ export class AddNote extends Component {
             value={this.state.value} 
             onChange={e => this.handleChange(e.target.value)}
           >
+            <option value="">Choose folder</option>
             {this.context.folders.map(folder =>
               <option value={folder.id} key={folder.id}>{folder.title}</option>
             )}
           </select>
+          {this.state.folderId.touched && (
+            <ValidationError message={folderIdError} />
+          )}
         </section>
 
         <section className="addNote__button__group">
           <Link to='/'>
-            <button type="reset">
+            <button className="basic-btn" type="reset">
               Cancel
             </button>
           </Link>
           <button
+            className="basic-btn"
             type="submit"
             disabled= {
               this.validateNoteName() ||
-              this.validateNoteContent()
+              this.validateNoteContent() ||
+              this.validateFolderId()
             }
           >
             Save

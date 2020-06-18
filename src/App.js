@@ -21,7 +21,6 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    console.log(config.API_ENDPOINT);
     
     fetch(`${config.API_ENDPOINT}/folders`, {
       method: 'GET',
@@ -67,14 +66,18 @@ export class App extends Component {
     {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
       },
       body: JSON.stringify(folder)
     }
     )
     .then((response) => response.json())
     .then((data) => {
-      console.log(`added ${data}`)
+      this.setState({
+        folders: [...this.state.folders, data],
+        error: null
+      })
     })
     .catch(err => {
       this.setState({ 
@@ -84,11 +87,13 @@ export class App extends Component {
   }
 
   handleAddNote = (note) => {
-    return fetch('http://localhost:8000/api/notes',
+    console.log('APP', note)
+    return fetch(`${config.API_ENDPOINT}/notes`,
     {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
       },
       body: JSON.stringify(note)
     }
@@ -108,10 +113,11 @@ export class App extends Component {
   }
 
   handleDelete = (noteId) => {
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
         },
     })
     this.setState({
@@ -132,9 +138,7 @@ export class App extends Component {
   }
 
   findNote = (noteId) => {
-    console.log(typeof noteId, this.state.notes)
     const val = this.state.notes.find((note) => note.id === parseInt(noteId))
-    console.log(val);
     return val;
     
   }
