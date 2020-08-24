@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ExpandedNote from '../ExpandedNote/ExpandedNote';
-import NotefulContext from '../../NotefulContext';
+import NotefulContext from '../../contexts/NotefulContext';
 
 export class ExpandedView extends Component {
   static contextType = NotefulContext;

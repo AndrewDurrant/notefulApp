@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './FolderList.css'
 import Folder from '../Folder/Folder';
-import NotefulContext from '../../NotefulContext';
+import NotefulContext from '../../contexts/NotefulContext';
 import FolderError from '../ErrorBoundaries/FolderError';
 // import AddFolder from '../AddFolder/AddFolder';
 

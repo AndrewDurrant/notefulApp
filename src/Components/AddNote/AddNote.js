@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ValidationError from '../../ValidationError';
-import NotefulContext from '../../NotefulContext';
+import NotefulContext from '../../contexts/NotefulContext';
 import './AddNote.css'
 import { Link } from 'react-router-dom';
 

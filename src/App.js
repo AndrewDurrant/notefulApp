@@ -5,7 +5,7 @@ import config from './config'
 import FolderList from './Components/FolderList/FolderList';
 import NoteList from './Components/NoteList/NoteList';
 import ExpandedView from './Components/ExpandedView/ExpandedView';
-import NotefulContext from './NotefulContext';
+import NotefulContext from './contexts/NotefulContext';
 import AddFolder from './Components/AddFolder/AddFolder';
 import AddNote from './Components/AddNote/AddNote';
 // import ErrorBoundary from './Components/ErrorBoundaries/ErrorBoundary';

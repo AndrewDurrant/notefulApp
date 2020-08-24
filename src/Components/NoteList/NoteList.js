@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './NoteList.css';
 
 import Note from '../Note/Note';
-import NotefulContext from '../../NotefulContext'
+import NotefulContext from '../../contexts/NotefulContext'
 import NoteError from '../ErrorBoundaries/NoteError';
 // import AddNote from '../AddNote/AddNote'
 

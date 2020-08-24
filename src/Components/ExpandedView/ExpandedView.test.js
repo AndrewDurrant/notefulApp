@@ -5,7 +5,7 @@ import ExpandedView from './ExpandedView';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
-import NotefulContext from '../../NotefulContext';
+import NotefulContext from '../../contexts/NotefulContext';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
